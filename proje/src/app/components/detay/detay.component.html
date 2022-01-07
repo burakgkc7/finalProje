@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="card mt-5 col-md-6 offset-md-3">
+      <div class="card-body">
+      <h2 class="card-text">{{secSoru.Soru}}</h2>
+      <p>&nbsp;</p>
+      <p class="text-success"><b>Onaylanmış Cevap:</b></p><hr> 
+      <p><b>{{secSoru.Cevap}}</b></p> <hr>
+        <p>&nbsp;</p>
+        <p class="text-dark"><b> Diğer cevaplara da göz atın:</b></p><hr>
+        <li class="list-group" *ngFor="let cevap of cevaplar">
+          <ul class="list-group-item">{{cevap.yeniCevap}}</ul><hr>        
+                  
+                  
+        </li>
+        <form class="form-group" #kayitForm="ngForm" (ngSubmit)="cevapKaydet()">
+          <div >
+            <input type="text" class="form-control"
+            required name="cevap" #soru="ngModel" [(ngModel)]="secCevap.yeniCevap">
+          </div>
+          <br>
+          <div >
+            <input type="submit" class="btn  btn-outline-info col-md-4 offset-md-4 btn-block" value="Cevap Ekle" [disabled]="kayitForm.invalid" >
+          </div>
+        </form>
+  
+      
+      </div>
+      <button class="btn btn-info mb-2" [routerLink]="['/']">Geri Dön</button>
+      <button class="btn btn-outline-danger mb-2" (click)="Sil()">Sil</button>
+    </div>
+  </div>
+</div>
